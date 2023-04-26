@@ -26,7 +26,7 @@ export default function Home({ liff, liffError }) {
         liff.liff.sendMessages([
           {
             type: 'text',
-            text: 'Hello, World!'
+            text: '熊'
           }
         ]).then(() => {
           console.log('message sent');
