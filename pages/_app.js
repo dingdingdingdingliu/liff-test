@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       import("@line/liff").then((liff) => {
       console.log("LIFF init...", liff);
       liff.liff
-        .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID })
+        .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID2 })
         .then(() => {
           console.log("LIFF init succeeded.");
           setLiffObject(liff);
