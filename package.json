@@ -2,7 +2,7 @@
   "name": "liff-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dingdingdingliu.github.io/liff-test",
+  "homepage": "https://dingdingdingdingliu.github.io/liff-test",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
