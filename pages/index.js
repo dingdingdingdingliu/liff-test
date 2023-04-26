@@ -78,7 +78,9 @@ export default function Home({ liff, liffError }) {
               button
             </button><br /><br />
             log<br />
-
+            testText: {testText}<br />
+            msg: {msg}<br />
+            queryParam: {queryParam}<br />
           </div>
       </main>
     </div>

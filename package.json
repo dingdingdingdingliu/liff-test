@@ -2,15 +2,12 @@
   "name": "liff-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dingdingdingdingliu.github.io/liff-test",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "export": "next export"
   },
   "dependencies": {
     "@line/liff": "2.22.0",
