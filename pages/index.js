@@ -37,7 +37,7 @@ export default function Home({ liff, liffError }) {
           setMsg(err instanceof Error ? err.message : err)
         }); 
       } else {
-        
+        console.log('getFriendship not yet')
       }
 
     } else {
@@ -78,9 +78,7 @@ export default function Home({ liff, liffError }) {
               button
             </button><br /><br />
             log<br />
-            {testText}<br />
-            {msg}<br />
-            {queryParam}
+
           </div>
       </main>
     </div>
