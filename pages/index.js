@@ -6,16 +6,11 @@ export default function Home({ liff, liffError }) {
   const [testText, setTestText] = useState();
   const [msg, setMsg] = useState();
   const [queryParam, setQueryParam] = useState();
-  const [isInClient, setIsInClient] = useState(false)
+  const [isInClient, setIsInClient] = useState(liff?.liff?.isInClient())
 
   useEffect(() => {
-    if(!!liff) {
-      liff?.liff?.isInClient().then((res) => {
-        console.log('isInClient', res)
-        setIsInClient(res)
-      });
-    }
-  }, [liff])
+      console.log('isInClient', isInClient)
+  }, [isInClient])
 
   const onLoginClick = () => {
     console.log('isLogin: ', liff.liff.isLoggedIn());
