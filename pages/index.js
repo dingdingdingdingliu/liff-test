@@ -18,7 +18,7 @@ export default function Home({ liff, liffError }) {
       setTestText(name)
     }).catch((err) => {
       console.log("error", err);
-      setTestText('getProfile ERROR')
+      setMsg('getProfile ERROR')
     });
   };
 
