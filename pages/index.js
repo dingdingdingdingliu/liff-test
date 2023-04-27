@@ -76,10 +76,10 @@ export default function Home({ liff, liffError }) {
           LIFF Documentation
         </a>
           {isInClient ?
-            <p style={{color: 'aqua', fontWeight: 'bold'}}>
+            <p style={{color: 'gray', fontWeight: 'bold'}}>
               使用LIFF內部瀏覽器
             </p> :
-            <p style={{color: 'aqua', fontWeight: 'bold'}}>
+            <p style={{color: 'gray', fontWeight: 'bold'}}>
               使用外部瀏覽器
             </p>
           }
