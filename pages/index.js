@@ -7,9 +7,10 @@ export default function Home({ liff, liffError }) {
   const [msg, setMsg] = useState();
   const [queryParam, setQueryParam] = useState();
   const [isInClient, setIsInClient] = useState(false)
-
+  
   useEffect(() => {
-    setIsInClient(liff?.liff?.isInClient())
+    const inClient = liff?.liff?.isInClient()
+    setIsInClient(inClient)
   }, [liff?.liff?.isInClient()])
 
   const onLoginClick = () => {
@@ -74,9 +75,12 @@ export default function Home({ liff, liffError }) {
         >
           LIFF Documentation
         </a>
-          {isInClient &&
+          {isInClient ?
             <p style={{color: 'aqua', fontWeight: 'bold'}}>
               使用LIFF內部瀏覽器
+            </p> :
+            <p style={{color: 'aqua', fontWeight: 'bold'}}>
+              使用外部瀏覽器
             </p>
           }
           {!liff?.liff?.isLoggedIn() &&
