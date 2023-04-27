@@ -16,15 +16,15 @@ function MyApp({ Component, pageProps }) {
         .then(() => {
           console.log("LIFF init succeeded.");
           setLiffObject(liff);
+          liff.liff.isInClient().then((res) => {
+            console.log('isInClient', res)
+            setIsInClient(res)
+          });
         })
         .catch((error) => {
           console.log("LIFF init failed.");
           setLiffError(error.toString());
         });
-      liff.liff.isInClient().then((res) => {
-        console.log('isInClient', res)
-        setIsInClient(res)
-      });
     });
   }, []);
 
