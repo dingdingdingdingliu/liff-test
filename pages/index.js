@@ -13,19 +13,24 @@ export default function Home({ liff, liffError }) {
     setIsInClient(inClient)
   }, [liff?.liff?.isInClient()])
 
+  useEffect(() => {
+    if(liff?.liff?.isLoggedIn()) {
+      liff.liff.getProfile().then((profile) => {
+        const name = profile.displayName;
+        console.log('profile', profile);
+        setTestText(name)
+      }).catch((err) => {
+        console.log("error", err);
+        setMsg('getProfile ERROR')
+      });
+    }
+  }, [liff?.liff?.isLoggedIn()])
+
   const onLoginClick = () => {
     console.log('isLogin: ', liff.liff.isLoggedIn());
     console.log('location:', window.location);
     setQueryParam(window.location.search)
     liff.liff.login()
-    liff.liff.getProfile().then((profile) => {
-      const name = profile.displayName;
-      console.log('profile', profile);
-      setTestText(name)
-    }).catch((err) => {
-      console.log("error", err);
-      setMsg('getProfile ERROR')
-    });
   };
 
   const onSendMsgClick = () => {
