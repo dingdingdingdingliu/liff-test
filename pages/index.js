@@ -15,6 +15,7 @@ export default function Home({ liff, liffError }) {
 
   useEffect(() => {
     if(liff?.liff?.isLoggedIn()) {
+      console.log('liff.liff', liff?.liff)
       liff.liff.getProfile().then((profile) => {
         const name = profile.displayName;
         console.log('profile', profile);
