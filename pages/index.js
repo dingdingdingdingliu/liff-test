@@ -7,6 +7,7 @@ export default function Home({ liff, liffError }) {
   const [msg, setMsg] = useState();
   const [queryParam, setQueryParam] = useState();
   const [isInClient, setIsInClient] = useState(false)
+  const [usedOS, setUsedOS] = useState('')
   
   useEffect(() => {
     const inClient = liff?.liff?.isInClient()
@@ -15,7 +16,7 @@ export default function Home({ liff, liffError }) {
 
   useEffect(() => {
     if(liff?.liff?.isLoggedIn()) {
-      console.log('liff.liff', liff?.liff)
+      setUsedOS(liff.liff.getOS())
       liff.liff.getProfile().then((profile) => {
         const name = profile.displayName;
         console.log('profile', profile);
@@ -83,10 +84,10 @@ export default function Home({ liff, liffError }) {
         </a>
           {isInClient ?
             <p style={{color: 'gray', fontWeight: 'bold'}}>
-              使用LIFF內部瀏覽器
+              {`使用LIFF內部瀏覽器, ${usedOS}`}
             </p> :
             <p style={{color: 'gray', fontWeight: 'bold'}}>
-              使用外部瀏覽器
+              {`使用外部瀏覽器, ${usedOS}`}
             </p>
           }
           {!liff?.liff?.isLoggedIn() &&
