@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
           console.log("LIFF init failed.");
           setLiffError(error.toString());
         });
-      liff.isInClient(res).then(() => {
+      liff.liff.isInClient(res).then(() => {
         console.log('isInClient', res)
         setIsInClient(res)
       });
