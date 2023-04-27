@@ -7,21 +7,22 @@ export default function Home({ liff, liffError }) {
   const [msg, setMsg] = useState();
   const [queryParam, setQueryParam] = useState();
 
-  const onBtnClick = () => {
-    console.log('1', liff.liff.isLoggedIn());
-    console.log(window.location);
+  const onLoginClick = () => {
+    console.log('isLogin: ', liff.liff.isLoggedIn());
+    console.log('location:', window.location);
     setQueryParam(window.location.search)
-    if (liff.liff.isLoggedIn() === true) {
-      liff.liff.getProfile().then((profile) => {
-        const name = profile.displayName;
-        console.log('2', profile);
-        setTestText(name)
-      })
-      .catch((err) => {
-        console.log("error", err);
-        setTestText(err instanceof Error ? err.message : err)
-      });
+    liff.liff.login()
+    liff.liff.getProfile().then((profile) => {
+      const name = profile.displayName;
+      console.log('profile', profile);
+      setTestText(name)
+    }).catch((err) => {
+      console.log("error", err);
+      setTestText('getProfile ERROR')
+    });
+  };
 
+  const onSendMsgClick = () => {
       if (liff.liff.getFriendship()) {
         liff.liff.sendMessages([
           {
@@ -37,14 +38,9 @@ export default function Home({ liff, liffError }) {
           setMsg(err instanceof Error ? err.message : err)
         }); 
       } else {
-        console.log('getFriendship not yet')
+        setTestText('getFriendship not yet')
       }
-
-    } else {
-      liff.liff.login()
-      // liff.liff.login({ redirectUri: "http://localhost:3000" })
-    }
-  };
+  }
 
   return (
     <div>
@@ -69,15 +65,39 @@ export default function Home({ liff, liffError }) {
           href="https://developers.line.biz/ja/docs/liff/"
           target="_blank"
           rel="noreferrer"
+          style={{borderBottom: '1px solid gray'}}
         >
           LIFF Documentation
         </a>
 
           <div style={{margin: '30px'}}>
-            <button onClick={onBtnClick}>
-              button
-            </button><br /><br />
-            log<br />
+            {!liff?.liff?.isLoggedIn() &&
+            <>
+              <button onClick={onLoginClick}>
+                button
+              </button>
+              <br />
+              <br />
+            </> 
+            }
+            {liff?.liff?.isLoggedIn() && !
+              <>
+                <button onClick={onBtnClick}>
+                  button
+                </button>
+                <br />
+                <br />
+              </> 
+            }
+            {liff?.liff?.isLoggedIn() && liff?.liff?.getFriendship() &&
+              <>
+                <button onClick={onSendMsgClick}>
+                  button
+                </button>
+                <br />
+                <br />
+              </> 
+            }
             testText: {testText}<br />
             msg: {msg}<br />
             queryParam: {queryParam}<br />
