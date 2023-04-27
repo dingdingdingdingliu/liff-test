@@ -9,8 +9,8 @@ export default function Home({ liff, liffError }) {
   const [isInClient, setIsInClient] = useState(false)
 
   useEffect(() => {
-    if(liff) {
-      liff.liff.isInClient().then((res) => {
+    if(!!liff) {
+      liff?.liff?.isInClient().then((res) => {
         console.log('isInClient', res)
         setIsInClient(res)
       });
