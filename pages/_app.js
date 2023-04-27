@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 function MyApp({ Component, pageProps }) {
   const [liffObject, setLiffObject] = useState(null);
   const [liffError, setLiffError] = useState(null);
-  const [isInClient, setIsInClient] = useState(false)
 
   // Execute liff.init() when the app is initialized
   useEffect(() => {
@@ -16,10 +15,6 @@ function MyApp({ Component, pageProps }) {
         .then(() => {
           console.log("LIFF init succeeded.");
           setLiffObject(liff);
-          liff.liff.isInClient().then((res) => {
-            console.log('isInClient', res)
-            setIsInClient(res)
-          });
         })
         .catch((error) => {
           console.log("LIFF init failed.");
