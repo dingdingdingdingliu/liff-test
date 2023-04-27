@@ -69,30 +69,36 @@ export default function Home({ liff, liffError }) {
         >
           LIFF Documentation
         </a>
+          {!liff?.liff?.isLoggedIn() &&
+            <p>
+              have to login liff!
+            </p>
+          }
+          {liff?.liff?.isLoggedIn() && !liff?.liff?.getFriendship() &&
+            <p>
+              liff login succeeded!
+            </p>
+          }
+          {liff?.liff?.isLoggedIn() && liff?.liff?.getFriendship() &&
+            <p>
+              liff login and add friend succeeded!
+            </p>
+          }
 
           <div style={{margin: '30px'}}>
             {!liff?.liff?.isLoggedIn() &&
             <>
               <button onClick={onLoginClick}>
-                button
+                login
               </button>
               <br />
               <br />
             </> 
             }
-            {liff?.liff?.isLoggedIn() && !
-              <>
-                <button onClick={onBtnClick}>
-                  button
-                </button>
-                <br />
-                <br />
-              </> 
-            }
             {liff?.liff?.isLoggedIn() && liff?.liff?.getFriendship() &&
               <>
                 <button onClick={onSendMsgClick}>
-                  button
+                  sendMsg
                 </button>
                 <br />
                 <br />
