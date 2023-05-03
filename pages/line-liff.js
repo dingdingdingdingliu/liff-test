@@ -58,7 +58,7 @@ export default function LineLiff({ liff, liffError }) {
   return (
     <div>
       <Head>
-        <title>LIFF App</title>
+        <title>LINE LIFF PAGE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
