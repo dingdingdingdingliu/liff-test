@@ -17,7 +17,6 @@ export default function Home({ liff, liffError }) {
   useEffect(() => {
     if(liff?.liff?.isLoggedIn()) {
       setUsedOS(liff.liff.getOS())
-      onSendMsgClick()
       liff.liff.getProfile().then((profile) => {
         const name = profile.displayName;
         console.log('profile', profile);
