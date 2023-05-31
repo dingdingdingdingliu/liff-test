@@ -35,8 +35,7 @@ export default function Home({ liff, liffError }) {
     liff.liff.login()
   };
 
-  useEffect(() => {
-    const onSendMsg = () => {
+  const onSendMsgClick = () => {
       if (liff.liff.getFriendship()) {
         liff.liff.sendMessages([
           {
@@ -54,19 +53,7 @@ export default function Home({ liff, liffError }) {
       } else {
         setTestText('getFriendship not yet')
       }
-    }
-
-    if (!liff) return
-    if (liff.isLoggedIn()) {
-      liff.getProfile().then((profile) => {
-        onSendMsg()
-      }).catch((err) => {
-        console.log('error', err)
-      })
-    } else {
-      liff.login({ redirectUri: location.href })
-    }
-  }, [liff])
+  }
 
   return (
     <div>
